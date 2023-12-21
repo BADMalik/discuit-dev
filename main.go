@@ -405,7 +405,7 @@ func openDatabase(user string, password string, dbName string, dbHost string, db
 	}
 	// configuration := mysqlDSN(user, password, dbName, dbHost, dbPort)
 
-	db, err := sql.Open("mysql", "discuitbilal:360s360S))))@tcp(discuitbilal.cd0oam2c41ow.us-east-1.rds.amazonaws.com:3306)/discuit")
+	db, err := sql.Open("mysql", mysqlDSN(user, password, dbName, dbHost, dbPort))
 
 	if err != nil {
 		fmt.Print("error")
