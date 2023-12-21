@@ -153,23 +153,23 @@ func migrate(c *config.Config, log bool, steps int) error {
 	fmt.Print(c.DBHost)
 	m, err := gomigrate.New("file://migrations/", "mysql://"+mysqlDSN(c.DBUser, c.DBPassword, c.DBName, c.DBHost, c.DBPort))
 	if err != nil {
-		fmt.Print(1)
+		fmt.Print("111111111111111")
 		return err
 	}
 	if log {
-		fmt.Print(11)
+		fmt.Print("22222222222222222")
 		m.Log = &migrationsLogger{verbose: false}
 	}
 
 	if steps == 0 {
-		fmt.Print(2)
+		fmt.Print("3333333333333333333")
 		err = m.Up()
 	} else {
-		fmt.Print(21)
+		fmt.Print("444444444444444444444444")
 		err = m.Steps(steps)
 	}
 	if err != nil && err != gomigrate.ErrNoChange {
-		fmt.Print(11232)
+		fmt.Print("55555555555555")
 		return err
 	}
 
