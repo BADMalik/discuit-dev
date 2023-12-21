@@ -384,10 +384,10 @@ func mysqlDSN(user string, password string, dbName string, dbHost string, dbPort
 	cfg.DBName = dbName
 	cfg.ParseTime = true
 	cfg.Addr = fmt.Sprintf("%s:%s", dbHost, dbPort) // Set the host and port
-	fmt.Print(cfg.User)
-	fmt.Print(cfg.Passwd)
-	fmt.Print(cfg.DBName)
-	fmt.Print(cfg.Addr)
+	fmt.Println(cfg.User)
+	fmt.Println(cfg.Passwd)
+	fmt.Println(cfg.DBName)
+	fmt.Println(cfg.Addr)
 
 	return cfg.FormatDSN()
 }
