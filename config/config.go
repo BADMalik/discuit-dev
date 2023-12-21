@@ -21,6 +21,8 @@ type Config struct {
 	DBUser     string `yaml:"dbUser"`
 	DBPassword string `yaml:"dbPassword"`
 	DBName     string `yaml:"dbName"`
+	DBHost     string `yaml:"dbHost"`
+	DBPort     string `yaml:"dbPort"`
 
 	SessionCookieName string `yaml:"sessionCookieName"`
 
