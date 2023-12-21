@@ -150,7 +150,7 @@ func (ml *migrationsLogger) Verbose() bool {
 // If steps is 0, all migrations are run. Otherwise, steps migrations are run up
 // or down depending on steps > 0 or not.
 func migrate(c *config.Config, log bool, steps int) error {
-	fmt.Print(c.DBHost)
+	fmt.Println(c.DBHost)
 	m, err := gomigrate.New("file://migrations/", "mysql://"+mysqlDSN(c.DBUser, c.DBPassword, c.DBName, c.DBHost, c.DBPort))
 	if err != nil {
 		fmt.Print("111111111111111")
@@ -222,7 +222,7 @@ func parseFlags(db *sql.DB, c *config.Config) (bool, error) {
 		}
 		return false, nil
 	}
-
+	fmt.Println()
 	if *runMigrations {
 		if err := migrate(c, true, *steps); err != nil {
 			fmt.Print("error is here ")
