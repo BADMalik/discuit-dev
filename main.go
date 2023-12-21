@@ -151,7 +151,9 @@ func (ml *migrationsLogger) Verbose() bool {
 // or down depending on steps > 0 or not.
 func migrate(c *config.Config, log bool, steps int) error {
 	fmt.Println(c.DBHost)
-	m, err := gomigrate.New("file://migrations/", "mysql://"+mysqlDSN(c.DBUser, c.DBPassword, c.DBName, c.DBHost, c.DBPort))
+	params := ("mysql://" + mysqlDSN(c.DBUser, c.DBPassword, c.DBName, c.DBHost, c.DBPort))
+	fmt.Println(params)
+	m, err := gomigrate.New("file://migrations/", params)
 	if err != nil {
 		fmt.Print("111111111111111")
 		return err
