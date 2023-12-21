@@ -23,7 +23,6 @@ import (
 	"github.com/discuitnet/discuit/internal/uid"
 	"github.com/discuitnet/discuit/internal/utils"
 	"github.com/discuitnet/discuit/server"
-	"github.com/go-sql-driver/mysql"
 	"github.com/gomodule/redigo/redis"
 
 	gomigrate "github.com/golang-migrate/migrate/v4"
@@ -380,18 +379,18 @@ func parseFlags(db *sql.DB, c *config.Config) (bool, error) {
 // mysqlDSN returns a DSN that could be used to connect to a MySQL database. You
 // may want to append mysql:// to the beginning of the returned string.
 func mysqlDSN(user string, password string, dbName string, dbHost string, dbPort string) string {
-	cfg := mysql.NewConfig()
-	cfg.User = user
-	cfg.Passwd = password
-	cfg.DBName = dbName
-	cfg.ParseTime = true
-	cfg.Addr = fmt.Sprintf("%s:%s", dbHost, dbPort) // Set the host and port
-	fmt.Println(cfg.User)
-	fmt.Println(cfg.Passwd)
-	fmt.Println(cfg.DBName)
-	fmt.Println(cfg.Addr)
-
-	return cfg.FormatDSN()
+	// cfg := mysql.NewConfig()
+	// cfg.User = user
+	// cfg.Passwd = password
+	// cfg.DBName = dbName
+	// cfg.ParseTime = true
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true", user, password, dbHost, dbPort, dbName)
+	// fmt.Println(cfg.User)
+	// fmt.Println(cfg.Passwd)
+	// fmt.Println(cfg.DBName)
+	// fmt.Println(cfg.Addr)
+	fmt.Println(dsn)
+	return dsn
 }
 
 // func dsn() string {
