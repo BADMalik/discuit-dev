@@ -37,7 +37,7 @@ func main() {
 	if err != nil {
 		log.Fatal("Error parsing config file: ", err)
 	}
-
+	fmt.Print(conf.DBHost)
 	// Connect to MariaDB.
 	db := openDatabase(conf.DBUser, conf.DBPassword, conf.DBName, conf.DBHost, conf.DBPort)
 	defer db.Close()
