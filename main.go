@@ -225,7 +225,10 @@ func parseFlags(db *sql.DB, c *config.Config) (bool, error) {
 
 	if *runMigrations {
 		if err := migrate(c, true, *steps); err != nil {
+			fmt.Print("error is here ")
 			return false, err
+		} else {
+			fmt.Print("no error ")
 		}
 	}
 	// New-migration command:
