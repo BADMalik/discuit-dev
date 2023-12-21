@@ -381,6 +381,10 @@ func mysqlDSN(user string, password string, dbName string, dbHost string, dbPort
 	cfg.DBName = dbName
 	cfg.ParseTime = true
 	cfg.Addr = fmt.Sprintf("%s:%s", dbHost, dbPort) // Set the host and port
+	fmt.Print(cfg.User)
+	fmt.Print(cfg.Passwd)
+	fmt.Print(cfg.DBName)
+	fmt.Print(cfg.Addr)
 
 	return cfg.FormatDSN()
 }
@@ -395,14 +399,17 @@ func openDatabase(user string, password string, dbName string, dbHost string, db
 	if dbName == "" {
 		log.Fatal("No database selected")
 	}
-	configuration := mysqlDSN(user, password, dbName, dbHost, dbPort)
+	// configuration := mysqlDSN(user, password, dbName, dbHost, dbPort)
 
-	db, err := sql.Open("mysql", configuration)
+	db, err := sql.Open("mysql", "discuitbilal:360s360S))))@tcp(discuitbilal.cd0oam2c41ow.us-east-1.rds.amazonaws.com:3306)/discuit")
+
 	if err != nil {
+		fmt.Print("error")
 		log.Fatal(err)
 	}
 
 	if err = db.Ping(); err != nil {
+		fmt.Print("PIng error")
 		log.Fatal(err)
 	}
 	fmt.Println("DB connection successful")
